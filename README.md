@@ -48,9 +48,10 @@ Os Notebooks disponíveis implementam experimentos com as três métricas de ava
 
 Os resultados foram promissores. As melhores configurações segundo as métricas definidas mostraram que existem intervalos mais amplos para a configuração do t-SNE. Particularmente, perplexidades mais altas que o usual mostraram bons resultados. Uma avaliação mais completa é feita no relatório contido neste repositório. Por ora, mostramos uma visualização do dataset [COIL-20](http://www.cs.columbia.edu/CAVE/software/softlib/coil-20.php) com hiperparâmetros sugeridos por [Maaten & Hinton](http://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf) e com os hiperparâmetros ótimos para o objetivo de representação de estrutura global.
 
+**Hiperarâmetros sugeridos por Maaten & Hinton:**
 ![](https://github.com/gdmarmerola/tsne-optim/blob/master/coil-20-default.png "Hiperarâmetros sugeridos por Maaten & Hinton")
-<div style="text-align:center">Hiperarâmetros sugeridos por Maaten & Hinton</div>
+
+**Hiperparâmetros otimizados para preservação de estrutura global:**
 ![](https://github.com/gdmarmerola/tsne-optim/blob/master/coil-20-best.png "Hiperparâmetros otimizados para preservação de estrutura global")
-<div style="text-align:center">Hiperparâmetros otimizados para preservação de estrutura global</div>
 
 Os clusters apresentam uma separação razoavelmente mais clara na visualização otimizada, obtida com uma perplexidade de 115 (fora do intervalo considerado como boa prática). 
