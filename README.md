@@ -4,6 +4,8 @@
 
 Neste repositório, apresento meu trabalho de conclusão de curso na Unicamp: "Ajuste automático de hiperparâmetros do algoritmo t-SNE para visualização de dados de elevada dimensão", sob a orientação do Prof. Dr. Fernando José Von Zuben.  
 
+[Link](https://www.dropbox.com/sh/rmsyfs2k72vnqni/AABlCgLb4dfHg6FIvVnM3jqNa?dl=0) com os dados, visualizações e histórico dos experimentos.
+
 ## Introdução e Metodologia
 
 O ajuste dos hiperparâmetros do t-SNE não é trivial. Apesar existirem argumentos suportando a tese de que [o algoritmo é insensível aos seus hiperparâmetros](http://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf), outras explorações apontam que o buraco é mais embaixo, mostrando que os [hiperparâmetros alteram significativamente o resultado do algoritmo.](https://distill.pub/2016/misread-tsne/).
@@ -31,11 +33,22 @@ O processo é conduzido da seguinte forma:
 3. Para cada rodada de otimização, a sequência de PCA e t-SNE é executada sob a configuração de hiperparâmetros selecionada pela metodologia de otimização em análise. Utilizando os mapeamentos e os resultados de agrupamento, computamos as métricas de avaliação definidas. Para a métrica rank-order correlation (estrutura global), HDBSCAN é executado somente nos dados em alta dimensionalidade, enquanto que para AMI (consistência de agrupamento) HDBSCAN é executado tanto em alta dimensionalidade quanto em baixa dimensionalidade. Para a métrica divergência KL, HDBSCAN não é executado. 
 4. O algoritmo de otimização de hiperparâmetros recebe o resultado do experimento, calculando uma nova configuração para o *Pipeline*.
 
+## Notebooks
+
+Os Notebooks disponíveis implementam experimentos com as três métricas de avaliação consideradas, três algoritmos de otimização e seis conjuntos de dados. Segue descrição: 
+* `notebooks/ami-optim.ipynb`: experimentos para otimizar a métrica de informação mútua ajustada.
+* `notebooks/baseline-plots.ipynb`: construindo visualizações com os hiperparâmetros sugeridos por Maaten & Hinton, para comparação qualitativa.
+* `notebooks/kl-divergence-optim.ipynb`: experimentos para otimizar a métrica de divergência KL.
+* `notebooks/optimizer-test.ipynb`: teste dos algoritmos de otimização.
+* `notebooks/rank-order-optim.ipynb`: experimentos para otimizar a métrica de *rank-order correlation*.
+* `notebooks/real-data-processing.ipynb`: criando as bases de dados reais.
+* `notebooks/synthetic-data-gen.ipynb`: criando as bases de dados sintéticas.
+
 ## Resultados
 
 Os resultados foram promissores. As melhores configurações segundo as métricas definidas mostraram que existem intervalos mais amplos para a configuração do t-SNE. Particularmente, perplexidades mais altas que o usual mostraram bons resultados. Uma avaliação mais completa é feita no Relatório contido neste repositório. Por ora, mostramos uma visualização do dataset [COIL-20](http://www.cs.columbia.edu/CAVE/software/softlib/coil-20.php) com hiperparâmetros sugeridos por [Maaten & Hinton](http://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf) e com os hiperparâmetros ótimos para o objetivo de representação de estrutura global.
 
-![Hiperarâmetros sugeridos por Maaten & Hinton](https://github.com/gdmarmerola/tsne-optim/blob/master/coil-20-default.png)
-![Hiperparâmetros otimizados para preservação de estrutura global](https://github.com/gdmarmerola/tsne-optim/blob/master/coil-20-best.png)
+![](https://github.com/gdmarmerola/tsne-optim/blob/master/coil-20-default.png "Hiperarâmetros sugeridos por Maaten & Hinton")
+![](https://github.com/gdmarmerola/tsne-optim/blob/master/coil-20-best.png "Hiperparâmetros otimizados para preservação de estrutura global")
 
 
