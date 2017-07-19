@@ -51,4 +51,4 @@ Os resultados foram promissores. As melhores configurações segundo as métrica
 ![](https://github.com/gdmarmerola/tsne-optim/blob/master/coil-20-default.png "Hiperarâmetros sugeridos por Maaten & Hinton")
 ![](https://github.com/gdmarmerola/tsne-optim/blob/master/coil-20-best.png "Hiperparâmetros otimizados para preservação de estrutura global")
 
-
+Os clusters apresentam uma separação razoavelmente mais clara na visualização otimizada, obtida com uma perplexidade de 115. 
